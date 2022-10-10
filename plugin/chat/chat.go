@@ -85,7 +85,7 @@ func init() { // 插件主体
 						"说什么炼铜不开心，肯定是谎话",
 						"听我说谢谢你~",
 						"被活活气死在床上",
-					}[rand.Intn(40)],
+					}[rand.Intn(39)],
 				))
 			case poke.Load(ctx.Event.GroupID).Acquire():
 				// 5分钟共8块命令牌 一次消耗1块命令牌
