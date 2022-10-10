@@ -41,12 +41,12 @@ func init() { // 插件主体
 		Handle(func(ctx *zero.Ctx) {
 			var nickname = zero.BotConfig.NickName[0]
 			switch {
-			case poke.Load(ctx.Event.GroupID).AcquireN(3):
+			case poke.Load(ctx.Event.GroupID).AcquireN(0):
 				// 5分钟共8块命令牌 一次消耗3块命令牌
 				time.Sleep(time.Second * 1)
 				ctx.SendChain(message.Text(
 					[]string{
-					"系内！",
+						"系内！",
 					        "喵呜~",
 					        "In the pipe, five by five.",
 					        "寄！",
@@ -55,7 +55,7 @@ func init() { // 插件主体
 					        "不许色色！",
 					        "铁咩！",
 					        "达咩跌斯！",
-						"投降降~",
+					    	"投降降~",
 						"跟你这只猪讲不通",
 						"红豆泥跌斯噶？",
 						"哈？",
@@ -85,7 +85,7 @@ func init() { // 插件主体
 						"说什么炼铜不开心，肯定是谎话",
 						"听我说谢谢你~",
 						"被活活气死在床上",
-						}[rand.Intn(39)],
+					}[rand.Intn(39)],
 				))
 			case poke.Load(ctx.Event.GroupID).Acquire():
 				// 5分钟共8块命令牌 一次消耗1块命令牌
