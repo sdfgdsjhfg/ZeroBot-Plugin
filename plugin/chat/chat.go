@@ -41,7 +41,7 @@ func init() { // 插件主体
 		Handle(func(ctx *zero.Ctx) {
 			var nickname = zero.BotConfig.NickName[0]
 			switch {
-			case poke.Load(ctx.Event.GroupID).AcquireN(0):
+			case poke.Load(ctx.Event.GroupID).AcquireN(1):
 				// 5分钟共8块命令牌 一次消耗3块命令牌
 				time.Sleep(time.Second * 1)
 				ctx.SendChain(message.Text(
@@ -65,7 +65,7 @@ func init() { // 插件主体
 						"少儿不宜",
 						"这样啊，还挺牛批的",
 						"把你饭叼走",
-						"呐，多洗爹~,
+						"呐，多洗爹~",
 						"再您马的见",
 						"你总是说些别人听不懂的东西",
 						"你们不吃饭吗？",
