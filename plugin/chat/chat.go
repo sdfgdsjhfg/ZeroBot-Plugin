@@ -45,16 +45,17 @@ func init() { // 插件主体
 				// 5分钟共8块命令牌 一次消耗3块命令牌
 				time.Sleep(time.Second * 1)
 				ctx.SendChain(message.Text(
-					"系内！",
-					"喵呜~",
-					"In the pipe, five by five.",
-					"寄！",
-					"八嘎！Hentai！无路赛！！！",
-					"呜啊！",
-					"不许色色！",
-					"铁咩！",
-					"达咩跌斯！",
-					[rand.Intn(9)],
+					[]string{
+						"1",
+					        "1",
+					        "1",
+					        "1",
+				     	        "1",
+					        "1",
+					        "1",
+					        "1",
+					        "1",
+					}[rand.Intn(9)],
 				))
 			case poke.Load(ctx.Event.GroupID).Acquire():
 				// 5分钟共8块命令牌 一次消耗1块命令牌
