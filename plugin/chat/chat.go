@@ -40,15 +40,12 @@ func init() { // 插件主体
 	engine.On("notice/notify/poke", zero.OnlyToMe).SetBlock(false).
 		Handle(func(ctx *zero.Ctx) {
 			var nickname = zero.BotConfig.NickName[0]
-			time.Sleep(time.Second * 1)
-			ctx.SendChain(message.Text(
-				switch {
+			switch {
 			case poke.Load(ctx.Event.GroupID).AcquireN(0):
 				// 5分钟共8块命令牌 一次消耗3块命令牌
 				time.Sleep(time.Second * 1)
 				ctx.SendChain(message.Text(
-				[]string{
-                                        "系内！",
+					"系内！",
 					"喵呜~",
 					"In the pipe, five by five.",
 					"寄！",
@@ -57,11 +54,16 @@ func init() { // 插件主体
 					"不许色色！",
 					"铁咩！",
 					"达咩跌斯！",
-				}[rand.Intn(9)],
-			))	
+					[rand.Intn(9)],
+				))
+			case poke.Load(ctx.Event.GroupID).Acquire():
+				// 5分钟共8块命令牌 一次消耗1块命令牌
+				time.Sleep(time.Second * 1)
+				ctx.SendChain(message.Text("喂(#`O′) 戳", nickname, "干嘛！"))
 			default:
 				// 频繁触发，不回复
 			}
+		})
 	// 群空调
 	var AirConditTemp = map[int64]int{}
 	var AirConditSwitch = map[int64]bool{}
