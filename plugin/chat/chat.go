@@ -42,8 +42,13 @@ func init() { // 插件主体
 			var nickname = zero.BotConfig.NickName[0]
 			time.Sleep(time.Second * 1)
 			ctx.SendChain(message.Text(
+				switch {
+			case poke.Load(ctx.Event.GroupID).AcquireN(0):
+				// 5分钟共8块命令牌 一次消耗3块命令牌
+				time.Sleep(time.Second * 1)
+				ctx.SendChain(message.Text(
 				[]string{
-					"系内！",
+                                        "系内！",
 					"喵呜~",
 					"In the pipe, five by five.",
 					"寄！",
@@ -53,8 +58,10 @@ func init() { // 插件主体
 					"铁咩！",
 					"达咩跌斯！",
 				}[rand.Intn(9)],
-			))
-		})
+			))	
+			default:
+				// 频繁触发，不回复
+			}
 	// 群空调
 	var AirConditTemp = map[int64]int{}
 	var AirConditSwitch = map[int64]bool{}
